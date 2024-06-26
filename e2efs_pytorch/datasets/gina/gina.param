@@ -1,0 +1,8 @@
+Data type: non-sparse
+Number of features: 970
+Number of examples and check-sums:
+     	Pos_ex	Neg_ex	Tot_ex	Check_sum
+Train	 1550	 1603	 3153	164947945.00
+Valid	  155	  160	  315	16688946.00
+Test	15504	16028	31532	1646492864.00
+All  	17209	17791	35000	1828129755.00
