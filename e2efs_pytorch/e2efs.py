@@ -89,7 +89,8 @@ class E2EFSBase:
             dataset = TensorDataset(torch.tensor(X, device=device, dtype=dtype), y_tensor, sample_weights)
         else:
             dataset = TensorDataset(torch.tensor(X, device=device, dtype=dtype), y_tensor)
-        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, drop_last=shuffle)
+        #num_workers recomendado por warning
+        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, drop_last=shuffle)#, num_workers=19)
         return dataloader
 
     def __fit_model(self, X, y, validation_data=None, batch_size=32, trainer_opts=dict(), verbose=True):
@@ -141,7 +142,8 @@ class E2EFSBase:
         device = self.model.e2efs_layer.kernel.device
         dtype = self.model.e2efs_layer.kernel.dtype
         dataset = TensorDataset(torch.tensor(X, device=device, dtype=dtype))
-        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False, drop_last=False)
+        #num_workers recomendado por warning
+        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False, drop_last=False)#, num_workers=19)
         trainer_opts = {'enable_checkpointing': False, 'precision': self.precision}
         trainer = pl.Trainer(enable_model_summary=verbose, enable_progress_bar=verbose, **trainer_opts)
         output = torch.cat(trainer.predict(self.model, dataloader), dim=0).cpu().numpy()

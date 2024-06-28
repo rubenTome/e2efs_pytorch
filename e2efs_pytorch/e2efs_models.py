@@ -3,6 +3,7 @@ from typing import Optional, Any
 import lightning as pl
 import torch
 from e2efs_pytorch.e2efs_layers import E2EFSMaskBase
+#lr cambiado a 0.01
 
 
 class E2EFSModel(pl.LightningModule):

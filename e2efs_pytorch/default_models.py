@@ -5,6 +5,7 @@ from e2efs_pytorch import networks
 from torch import nn
 import torch
 import numpy as np
+#lr cambiado a 0.01
 
 
 class DefaultClassifier(pl.LightningModule):
